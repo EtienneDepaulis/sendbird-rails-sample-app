@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require bootstrap
+ *= require chat
  *= require_self
  */
 

@@ -2,6 +2,12 @@
 <html>
 <head>
   <title>Sendbird Rails Sample App</title>
+
+  <link href='https://fonts.googleapis.com/css?family=Exo+2:400,900italic,900,800italic,800,700italic,700,600italic,600,500italic,500,400italic,300italic,200italic,200,100italic,100,300'
+        rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,900italic,900,800italic,800,700italic,700,600italic,600,500italic,500,400italic,300italic,200italic,200,100italic,100,300'
+        rel='stylesheet' type='text/css'>
+
   <%= stylesheet_link_tag    'application', media: 'all' %>
 
   <%= csrf_meta_tags %>
@@ -36,6 +42,15 @@
   <div class="container">
     <%= yield %>
   </div><!-- /.container -->
+
+  <% if user_signed_in? and !current_user.sendbird_id.nil? %>
+    <script type="text/javascript">
+      var appId = '<%= ENV['SENDBIRD_APP_ID'] %>';
+      var nickname = '<%= current_user.name %>';
+      var guestId = '<%= current_user.sendbird_id %>';
+
+    </script>
+  <% end %>
 
   <%= javascript_include_tag 'application' %>
 

@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require jquery-ujs
-//= require moment
-//= require handlebars
+//= require util
+//= require chat
+//= require sendbird.min

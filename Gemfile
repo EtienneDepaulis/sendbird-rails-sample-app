@@ -15,14 +15,14 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-jquery', '2.1.4'
   gem 'rails-assets-jquery-ujs', '1.0.4'
   gem 'rails-assets-bootstrap', '3.3.5'
-  gem 'rails-assets-handlebars', '3.0.3'
-  gem 'rails-assets-moment', '2.10.6'
 end
 
 gem 'foreman'
 gem 'puma'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
+
+gem 'sendbird', github: "EtienneDepaulis/sendbird"
 
 group :development, :test do
   gem 'byebug'

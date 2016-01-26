@@ -3,7 +3,7 @@ class Group < ActiveRecord::Base
 	has_many :members
   has_many :users, through: :members
 
-  after_create :create_on_sendbird_and_save_url
+  after_create :create_on_sendbird
 
   def to_s
     name
@@ -15,12 +15,23 @@ class Group < ActiveRecord::Base
     invite_user_on_sendbird(user)
   end
 
+  def sendbird_group
+    Sendbird::Messaging.new(name: name, channel_url: sendbird_channel_url)
+  end
+
   private
 
-  	def create_on_sendbird_and_save_url
+  	def create_on_sendbird
+      return unless sendbird_channel_url.nil?
+
+      sendbird_group = Sendbird::Messaging.new(name: name).create
+
+      self.sendbird_channel_url = sendbird_group.channel_url
+      save
   	end
 
   	def invite_user_on_sendbird(user)
+      sendbird_group.invite(user.sendbird_user)
   	end
 
 end
