@@ -5,6 +5,10 @@ class Group < ActiveRecord::Base
 
   after_create :create_on_sendbird_and_save_url
 
+  def to_s
+    name
+  end
+
   def add_user(user)
     users << user
 

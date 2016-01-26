@@ -1,0 +1,7 @@
+<ul class="nav nav-pills">
+  <% @groups.each do |group| %>
+    <li role="presentation">
+      <%= link_to group, group_path(group) %>
+    </li>
+  <% end %>
+</ul>

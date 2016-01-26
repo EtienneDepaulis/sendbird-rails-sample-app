@@ -1,14 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SendbirdRailsSampleRapp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <title>Sendbird Rails Sample App</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to root_path, class: "navbar-brand" do %>
+          Sendbird Rails Sample App
+        <% end %>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+
+        <ul class="nav navbar-nav">
+          <% User.all.each do |user| %>
+            <li class="<%= current_user == user ? 'active' : '' %>"><%= link_to user, sessions_path(user_id: user.id), method: :post %></li>
+          <% end %>
+        </ul>
+
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+
+  <div class="container">
+    <%= yield %>
+  </div><!-- /.container -->
+
+  <%= javascript_include_tag 'application' %>
 
 </body>
 </html>
