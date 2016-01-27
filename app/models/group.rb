@@ -19,16 +19,16 @@ class Group < ActiveRecord::Base
     Sendbird::Messaging.new(name: name, channel_url: sendbird_channel_url)
   end
 
+  def create_on_sendbird
+    return unless sendbird_channel_url.nil?
+
+    created_group = sendbird_group.create
+
+    self.sendbird_channel_url = created_group.channel_url
+    save
+  end
+
   private
-
-  	def create_on_sendbird
-      return unless sendbird_channel_url.nil?
-
-      sendbird_group = Sendbird::Messaging.new(name: name).create
-
-      self.sendbird_channel_url = sendbird_group.channel_url
-      save
-  	end
 
   	def invite_user_on_sendbird(user)
       sendbird_group.invite(user.sendbird_user)

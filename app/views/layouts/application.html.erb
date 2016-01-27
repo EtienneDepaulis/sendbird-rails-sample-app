@@ -43,11 +43,11 @@
     <%= yield %>
   </div><!-- /.container -->
 
-  <% if user_signed_in? and !current_user.sendbird_id.nil? %>
+  <% if user_signed_in? %>
     <script type="text/javascript">
       var appId = '<%= ENV['SENDBIRD_APP_ID'] %>';
       var nickname = '<%= current_user.name %>';
-      var guestId = '<%= current_user.sendbird_id %>';
+      var guestId = '<%= current_user.sendbird_user_id %>';
 
     </script>
   <% end %>

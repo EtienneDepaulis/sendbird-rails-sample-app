@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/EtienneDepaulis/sendbird.git
-  revision: d8cc3731965e463fa1aa269e867ce86448831d34
+  revision: d1c6a59a15365f9a977e2614125e931a25e91a19
   specs:
     sendbird (0.1.0)
       faraday (~> 0.9)

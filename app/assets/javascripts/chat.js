@@ -523,13 +523,14 @@ function addMessagingChannel(isGroup, channelMemberList, targetChannel) {
   }
 
   targetAddMessagingChannel = targetChannel;
+  console.log(targetChannel);
   if (addFlag && !isGroup) {
     $('#messaging_channel_list').append(
       '<div class="left-nav-channel left-nav-channel-messaging left-nav-channel-messaging--active" ' +
       '     onclick="joinMessagingChannel(\'' + targetChannel["channel_url"] + '\')"' +
       '     data-channel-url="' + targetChannel["channel_url"] + '"' +
       '>' +
-      channelMemberList +
+      targetChannel["name"] +
       '  <div class="left-nav-channel-leave" onclick="endMessaging(targetAddMessagingChannel, $(this))"></div>' +
       '</div>'
     );
@@ -539,9 +540,7 @@ function addMessagingChannel(isGroup, channelMemberList, targetChannel) {
       '     onclick="joinMessagingChannel(\'' + targetChannel["channel_url"] + '\')"' +
       '     data-channel-url="' + targetChannel["channel_url"] + '"' +
       '>' +
-      channelMemberList +
-      '  <div class="left-nav-channel-leave" onclick="endMessaging(targetAddMessagingChannel, $(this))"></div>' +
-      '</div>'
+      targetChannel["name"]
     );
     targetAddMessagingChannel = null;
   }
