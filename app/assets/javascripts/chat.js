@@ -523,7 +523,7 @@ function addMessagingChannel(isGroup, channelMemberList, targetChannel) {
   }
 
   targetAddMessagingChannel = targetChannel;
-  console.log(targetChannel);
+
   if (addFlag && !isGroup) {
     $('#messaging_channel_list').append(
       '<div class="left-nav-channel left-nav-channel-messaging left-nav-channel-messaging--active" ' +
